@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>タイムカード（記録帳）</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>タイムカード（記録帳）</h1>
+    <div class="clock" id="clock">--:--:--</div>
+  </header>
+
+  <main>
+    <section class="card entry-card">
+      <h2>1日分をまとめて入力</h2>
+      <label>社員
+        <select id="employeeSelect"></select>
+      </label>
+      <div class="grid-2">
+        <label>日付
+          <input type="date" id="dateInput">
+        </label>
+        <label>出勤時刻
+          <input type="time" id="startInput" step="60">
+        </label>
+        <label>退勤時刻
+          <input type="time" id="endInput" step="60">
+        </label>
+        <label>休憩時間（時間数）
+          <input type="number" id="breakInput" min="0" step="0.25" placeholder="例) 1.0">
+        </label>
+        <label>残業時間（時刻・15分単位）
+          <input type="time" id="overtimeInput" step="900" value="00:00">
+        </label>
+      </div>
+
+      <div class="btn-grid">
+        <button id="saveBtn" class="primary" type="button">保存する</button>
+        <button id="resetBtn" class="ghost" type="button">入力をクリア</button>
+      </div>
+      <div id="message" class="message"></div>
+    </section>
+
+    <section class="card filters-card">
+      <h2>集計・フィルター</h2>
+      <div class="filters">
+        <label>対象月
+          <input type="month" id="monthInput">
+        </label>
+        <label>社員フィルター
+          <select id="filterEmployee"></select>
+        </label>
+        <div class="actions">
+          <button id="csvBtn">CSVダウンロード</button>
+          <button id="printBtn">印刷</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card records-card">
+      <h2>入力履歴（編集／削除）</h2>
+      <div class="table-wrap">
+        <table id="recordsTable">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>社員名</th>
+              <th>出勤</th>
+              <th>退勤</th>
+              <th>休憩</th>
+              <th>残業</th>
+              <th>実働</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card summary-card">
+      <h2>月次集計</h2>
+      <div class="table-wrap">
+        <table id="summaryTable">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>社員名</th>
+              <th>出勤</th>
+              <th>退勤</th>
+              <th>休憩</th>
+              <th>実働</th>
+              <th>残業</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
