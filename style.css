@@ -49,6 +49,8 @@ label {
 
 select, input, button {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding: 12px;
   margin-top: 6px;
   border: 1px solid var(--border);
@@ -89,7 +91,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
 }
 
@@ -148,7 +150,10 @@ th {
   body { padding: 24px; }
   .filters { grid-template-columns: repeat(3, 1fr); align-items: end; }
   .actions { grid-template-columns: repeat(2, 1fr); }
-  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}
+
+@media (min-width: 600px) {
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 }
 
 /* 印刷時は月次集計のみ */
