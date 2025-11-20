@@ -52,11 +52,21 @@ select, input, button {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  padding: 12px;
+  padding: 11px 12px;
   margin-top: 6px;
   border: 1px solid var(--border);
   border-radius: 10px;
   font-size: 1rem;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1.3;
+  background: #fff;
 }
 
 button {
