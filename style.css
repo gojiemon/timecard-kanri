@@ -1,12 +1,13 @@
 :root {
-  --bg: linear-gradient(120deg, #ff6b6b 0%, #06b6d4 100%);
-  --card: rgba(255, 255, 255, 0.08);
-  --surface: rgba(255, 255, 255, 0.12);
-  --border: rgba(255, 255, 255, 0.28);
-  --text: #f8fafc;
-  --muted: #cfe4ee;
-  --accent: #86efac;
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --surface: #f9fbff;
+  --border: #d9e4ff;
+  --text: #0f172a;
+  --muted: #5b6475;
+  --accent: #2563eb;
   --accent-strong: #22d3ee;
+  --warn: #f97316;
 }
 
 * { box-sizing: border-box; }
@@ -38,12 +39,15 @@ h2 { margin: 0 0 12px; font-size: 1.15rem; letter-spacing: 0.01em; }
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
-  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
 }
+.entry-card { border-color: #22d3ee; }
+.filters-card { border-color: #a855f7; }
+.records-card { border-color: #6366f1; }
+.summary-card { border-color: #22c55e; }
 
 label {
   display: block;
