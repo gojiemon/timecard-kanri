@@ -198,9 +198,13 @@ function renderRecords() {
 
 function renderSummary() {
   const filterEmpSelect = document.getElementById("filterEmployee");
-  const selectedEmpName = filterEmpSelect.options[filterEmpSelect.selectedIndex]?.text || "";
+  const selectedEmpText = filterEmpSelect.options[filterEmpSelect.selectedIndex]?.text || "";
+  const filterValue = filterEmpSelect.value;
   const titleEl = document.getElementById("summaryTitle");
-  titleEl.textContent = selectedEmpName ? `${selectedEmpName} さんの月次集計` : "月次集計";
+  const displayName = filterValue === "all" && EMPLOYEES.length === 1
+    ? EMPLOYEES[0].name
+    : selectedEmpText;
+  titleEl.textContent = displayName ? `${displayName} さんの月次集計` : "月次集計";
 
   const tbody = document.querySelector("#summaryTable tbody");
   tbody.innerHTML = "";
