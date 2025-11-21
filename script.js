@@ -197,6 +197,11 @@ function renderRecords() {
 }
 
 function renderSummary() {
+  const filterEmpSelect = document.getElementById("filterEmployee");
+  const selectedEmpName = filterEmpSelect.options[filterEmpSelect.selectedIndex]?.text || "";
+  const titleEl = document.getElementById("summaryTitle");
+  titleEl.textContent = selectedEmpName ? `${selectedEmpName} さんの月次集計` : "月次集計";
+
   const tbody = document.querySelector("#summaryTable tbody");
   tbody.innerHTML = "";
   const summary = getMonthlySummary(document.getElementById("monthInput").value, document.getElementById("filterEmployee").value);
@@ -205,7 +210,6 @@ function renderSummary() {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${row.date}</td>
-      <td>${row.employeeName}</td>
       <td>${row.start}</td>
       <td>${row.end}</td>
       <td>${formatMinutes(row.breakMinutes)}</td>
